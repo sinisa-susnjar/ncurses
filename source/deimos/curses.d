@@ -691,7 +691,7 @@ extern nothrow @nogc int vidputs (chtype, NCURSES_OUTC);              /* impleme
 deprecated("use vw_printw") extern nothrow @nogc int vwprintw (WINDOW *, const(char) *, va_list)   /* implemented */
                 /*GCC_PRINTFLIKE(2,0)*/;
 extern nothrow @nogc int vw_printw (WINDOW *, const(char) *, va_list)  /* implemented */
-                /*GCC_PRINTFLIKE(2,0)*/;    
+                /*GCC_PRINTFLIKE(2,0)*/;
 deprecated("use vw_scanw") extern nothrow @nogc int vwscanw (WINDOW *, const(char) *, va_list)    /* implemented */
                 /*GCC_SCANFLIKE(2,0)*/;
 extern nothrow @nogc int vw_scanw (WINDOW *, const(char) *, va_list)   /* implemented */
@@ -1076,17 +1076,17 @@ auto  wattroff(win,at)(win win,at at)  { pragma(inline, true); return wattr_off(
 static if (!NCURSES_OPAQUE) {
 static if (NCURSES_WATTR_MACROS) {
 static if (NCURSES_WIDECHAR && 1) {
-auto  wattrset(win,at)(win win,at at) { pragma(inline, true); return 
-        (NCURSES_OK_ADDR(win) 
-          ? ((win)._color = cast(int)(PAIR_NUMBER(at)), 
-             (win)._attrs = cast(attr_t)(at), 
-             OK) 
+auto  wattrset(win,at)(win win,at at) { pragma(inline, true); return
+        (NCURSES_OK_ADDR(win)
+          ? ((win)._color = cast(int)(PAIR_NUMBER(at)),
+             (win)._attrs = cast(attr_t)(at),
+             OK)
           : ERR); }
 } else {
-auto  wattrset(win,at)(win win,at at) { pragma(inline, true); return 
-        (NCURSES_OK_ADDR(win) 
-          ? ((win)._attrs = cast(attr_t)(at), 
-             OK) 
+auto  wattrset(win,at)(win win,at at) { pragma(inline, true); return
+        (NCURSES_OK_ADDR(win)
+          ? ((win)._attrs = cast(attr_t)(at),
+             OK)
           : ERR); }
 }
 } /* NCURSES_WATTR_MACROS */
@@ -1228,41 +1228,41 @@ auto  slk_attr_on(a,v)(a a,v v)                { pragma(inline, true); return ((
 static if (!NCURSES_OPAQUE) {
 static if (NCURSES_WATTR_MACROS) {
 static if (NCURSES_WIDECHAR && 1) {
-auto  wattr_set(win,a,p,opts)(win win,a a,p p,opts opts) { pragma(inline, true); return 
-        (NCURSES_OK_ADDR(win) 
-         ? (cast(void)((win)._attrs = ((a) & ~A_COLOR), 
-                       (win)._color = (opts) ? *cast(int *)(opts) : (p)), 
-            OK) 
+auto  wattr_set(win,a,p,opts)(win win,a a,p p,opts opts) { pragma(inline, true); return
+        (NCURSES_OK_ADDR(win)
+         ? (cast(void)((win)._attrs = ((a) & ~A_COLOR),
+                       (win)._color = (opts) ? *cast(int *)(opts) : (p)),
+            OK)
          : ERR); }
-auto  wattr_get(win,a,p,opts)(win win,a a,p p,opts opts) { pragma(inline, true); return 
-        (NCURSES_OK_ADDR(win) 
-         ? (cast(void)(NCURSES_OK_ADDR(a) 
-                   ? (*(a) = (win)._attrs) 
-                   : OK), 
-            cast(void)(NCURSES_OK_ADDR(p) 
-                   ? (*(p) = cast(NCURSES_PAIRS_T) (win)._color) 
-                   : OK), 
-            cast(void)(NCURSES_OK_ADDR(opts) 
-                   ? (*cast(int *)(opts) = (win)._color) 
-                   : OK), 
-            OK) 
+auto  wattr_get(win,a,p,opts)(win win,a a,p p,opts opts) { pragma(inline, true); return
+        (NCURSES_OK_ADDR(win)
+         ? (cast(void)(NCURSES_OK_ADDR(a)
+                   ? (*(a) = (win)._attrs)
+                   : OK),
+            cast(void)(NCURSES_OK_ADDR(p)
+                   ? (*(p) = cast(NCURSES_PAIRS_T) (win)._color)
+                   : OK),
+            cast(void)(NCURSES_OK_ADDR(opts)
+                   ? (*cast(int *)(opts) = (win)._color)
+                   : OK),
+            OK)
          : ERR); }
 } else { /* !(NCURSES_WIDECHAR && NCURSES_EXE_COLORS) */
-auto  wattr_set(win,a,p,opts)(win win,a a,p p,opts opts) { pragma(inline, true); return 
-         (NCURSES_OK_ADDR(win) 
-          ? (cast(void)((win)._attrs = (((a) & ~A_COLOR) | 
-                                     cast(attr_t)COLOR_PAIR(p))), 
-             OK) 
+auto  wattr_set(win,a,p,opts)(win win,a a,p p,opts opts) { pragma(inline, true); return
+         (NCURSES_OK_ADDR(win)
+          ? (cast(void)((win)._attrs = (((a) & ~A_COLOR) |
+                                     cast(attr_t)COLOR_PAIR(p))),
+             OK)
           : ERR); }
-auto  wattr_get(win,a,p,opts)(win win,a a,p p,opts opts) { pragma(inline, true); return 
-        (NCURSES_OK_ADDR(win) 
-         ? (cast(void)(NCURSES_OK_ADDR(a) 
-                   ? (*(a) = (win)._attrs) 
-                   : OK), 
-            cast(void)(NCURSES_OK_ADDR(p) 
-                   ? (*(p) = cast(NCURSES_PAIRS_T) PAIR_NUMBER((win)._attrs)) 
-                   : OK), 
-            OK) 
+auto  wattr_get(win,a,p,opts)(win win,a a,p p,opts opts) { pragma(inline, true); return
+        (NCURSES_OK_ADDR(win)
+         ? (cast(void)(NCURSES_OK_ADDR(a)
+                   ? (*(a) = (win)._attrs)
+                   : OK),
+            cast(void)(NCURSES_OK_ADDR(p)
+                   ? (*(p) = cast(NCURSES_PAIRS_T) PAIR_NUMBER((win)._attrs))
+                   : OK),
+            OK)
          : ERR); }
 } /* (NCURSES_WIDECHAR && NCURSES_EXE_COLORS) */
 } /* NCURSES_WATTR_MACROS */
@@ -1339,16 +1339,16 @@ mixin NCURSES_D_VAR!(int, q{TABSIZE});
 
 } else {
 
-extern __gshared NCURSES_EXPORT_VAR!(WINDOW *) curscr;
-extern __gshared NCURSES_EXPORT_VAR!(WINDOW *) newscr;
-extern __gshared NCURSES_EXPORT_VAR!(WINDOW *) stdscr;
-extern __gshared NCURSES_EXPORT_VAR!(char*/*[]*/) ttytype;
-extern __gshared NCURSES_EXPORT_VAR!(int) COLORS;
-extern __gshared NCURSES_EXPORT_VAR!(int) COLOR_PAIRS;
-extern __gshared NCURSES_EXPORT_VAR!(int) COLS;
-extern __gshared NCURSES_EXPORT_VAR!(int) ESCDELAY;
-extern __gshared NCURSES_EXPORT_VAR!(int) LINES;
-extern __gshared NCURSES_EXPORT_VAR!(int) TABSIZE;
+export extern __gshared NCURSES_EXPORT_VAR!(WINDOW *) curscr;
+export extern __gshared NCURSES_EXPORT_VAR!(WINDOW *) newscr;
+export extern __gshared NCURSES_EXPORT_VAR!(WINDOW *) stdscr;
+export extern __gshared NCURSES_EXPORT_VAR!(char*/*[]*/) ttytype;
+export extern __gshared NCURSES_EXPORT_VAR!(int) COLORS;
+export extern __gshared NCURSES_EXPORT_VAR!(int) COLOR_PAIRS;
+export extern __gshared NCURSES_EXPORT_VAR!(int) COLS;
+export extern __gshared NCURSES_EXPORT_VAR!(int) ESCDELAY;
+export extern __gshared NCURSES_EXPORT_VAR!(int) LINES;
+export extern __gshared NCURSES_EXPORT_VAR!(int) TABSIZE;
 
 }
 /*

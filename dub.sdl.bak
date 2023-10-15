@@ -13,8 +13,12 @@ targetName "ncurses-d"
 # Howebrew installs libncurses here:
 lflags "-L/usr/local/opt/ncurses/lib" platform="osx"
 
+# MSys2 MingW64
+lflags "-Lc:/msys64/mingw64/lib" platform="windows"
+
 configuration "minimal" {
-	libs "ncursesw"
+    libs "ncursesw" platform="osx"
+    libs "c:/msys64/mingw64/lib/libncursesw.dll.a" platform="windows"
 }
 
 configuration "panels" {

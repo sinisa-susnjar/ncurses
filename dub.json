@@ -1,0 +1,27 @@
+{
+    "authors": [
+        "Jon \"ylixir\" Allen",
+        "Dejan Lekic",
+        "Jude \"1100110\" Young",
+        "Vladimir Panteleev"
+    ],
+    "copyright": "Copyright © 2023, Sinisa Susnjar",
+    "description": "D bindings for the Poppler PDF rendering library",
+    "configurations": [
+        {
+            "lflags-linux": [
+                "/usr/lib/x86_64-linux-gnu/libpoppler-glib.so.8"
+            ],
+            "lflags-windows": [
+                "c:/msys64/mingw64/lib/libncursesw.dll.a"
+            ],
+            "lflags-osx": [
+                "TODO"
+            ],
+            "name": "lib",
+            "targetType": "staticLibrary"
+        }
+    ],
+    "license": "MIT",
+    "name": "ncurses"
+}
