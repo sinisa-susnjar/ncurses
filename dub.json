@@ -10,7 +10,8 @@
     "configurations": [
         {
             "lflags-linux": [
-                "/usr/lib/x86_64-linux-gnu/libpoppler-glib.so.8"
+                "/lib/x86_64-linux-gnu/libncursesw.a",
+                "/lib/x86_64-linux-gnu/libtinfo.a"
             ],
             "lflags-windows": [
                 "c:/msys64/mingw64/lib/libncursesw.dll.a"
